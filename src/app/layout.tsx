@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
+import Logo from "/public/assets/logo.png";
+import { Inter, Roboto_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const pretendard = localFont({
+  src: "../../public/fonts/PretendardVariable.woff2",
+});
+const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const roboto_mono = Roboto_Mono({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto-m",
 });
 
 export const metadata: Metadata = {
@@ -24,10 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <header>루트레이아웃 헤더입니다</header>
+      <body className={pretendard.className}>
+        <header className="w-full h-[60px] bg-black flex justify-center">
+          <Image height={40} width={150} src={Logo} alt="logo"></Image>
+        </header>
         {children}
       </body>
     </html>
